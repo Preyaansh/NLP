@@ -1,0 +1,9 @@
+streamlit>=1.37
+numpy
+pandas
+spacy
+nltk
+transformers
+torch
+groq
+python-dotenv
