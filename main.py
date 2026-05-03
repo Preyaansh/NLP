@@ -1074,7 +1074,7 @@ conversation_text = st.text_area(
     label_visibility="collapsed",
 )
 
-analyze_clicked = st.button("🔍 Analyze Conversation", type="primary", use_container_width=True)
+analyze_clicked = st.button("🔍 Analyze Conversation", type="primary", width="stretch")
 
 if analyze_clicked:
     if not conversation_text.strip():
@@ -1140,7 +1140,7 @@ if st.session_state.analysis:
         .properties(height=340)
         .interactive()
     )
-    st.altair_chart(chart, use_container_width=True)
+    st.altair_chart(chart, width="stretch")
     st.caption("Tip: use the selector above to hide noisy lines. Hover points for exact values.")
     spikes = [item["index"] for item in sentence_results if item["score"] >= 50]
     if spikes:
@@ -1170,5 +1170,5 @@ if st.session_state.analysis:
         data=report,
         file_name="suspicious_conversation_report.pdf",
         mime="application/pdf",
-        use_container_width=True,
+        width="stretch",
     )

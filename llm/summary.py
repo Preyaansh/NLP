@@ -5,7 +5,13 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+
+
+def get_client():
+    api_key = os.getenv("GROQ_API_KEY")
+    if not api_key:
+        raise RuntimeError("GROQ_API_KEY is not configured")
+    return Groq(api_key=api_key)
 
 
 def generate_final_summary(conversation, signals_summary):
@@ -36,7 +42,7 @@ Rules:
 Keep it concise.
 """
 
-    response = client.chat.completions.create(
+    response = get_client().chat.completions.create(
         model="llama-3.3-70b-versatile",
         messages=[{"role": "user", "content": prompt}],
         temperature=0.3
