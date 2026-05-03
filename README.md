@@ -32,6 +32,12 @@ GROQ_API_KEY=your_groq_key
 
 The app still runs without `GROQ_API_KEY`, but it will use local fallback explanations instead of LLM-generated explanations.
 
+The hosted version uses a lightweight built-in emotion detector to keep Render free-tier memory usage stable. To use the heavier Hugging Face emotion model locally, install `transformers` and `torch`, then set:
+
+```text
+USE_TRANSFORMERS_EMOTION=true
+```
+
 ## Notes
 
 This is not a lie detector. It reports linguistic and behavioral patterns, not factual truth.
